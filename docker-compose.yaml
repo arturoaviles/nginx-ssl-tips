@@ -1,0 +1,16 @@
+nginx:
+  build: ./nginx
+  container_name: nginx
+  restart: always
+  links:
+  - login
+  ports:
+  - "80:80"
+  volumes:
+  - ./etc/nginx/conf.d/server.conf:/etc/nginx/conf.d/server.conf
+login:
+  build: ./login
+  container_name: login
+  restart: always
+  expose:
+  - "80"
